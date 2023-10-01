@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #radar-container {
+            width: 200px;
+            height: 200px;
+            background-color: #f0f0f0;
+            position: relative;
+            border-radius: 50%;
+        }
+
+        #ray {
+            width: 2px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform-origin: center bottom;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id="radar-container">
+        <div id="ray"></div>
+    </div>
+
+    <script>
+        const ray = document.getElementById("ray");
+        let rotation = 0;
+
+        function rotateRay() {
+            rotation += 1;
+            ray.style.transform = `translateX(-50%) rotate(${rotation}deg)`;
+            requestAnimationFrame(rotateRay);
+        }
+
+        rotateRay();
+    </script>
+</body>
+</html>
